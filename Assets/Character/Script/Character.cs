@@ -4,18 +4,13 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] protected SoundScriptableObject m_deathSound;
-    protected HP Hp;
-    protected Movement Movement;
+    protected HP m_hp;
+    protected Movement m_movement;
     
-    protected virtual void OnHit(GameObject _go)
+    public virtual void OnHit(float _damage)
     {
-
+        m_hp.UpdateHP(-_damage);
     }
 
     protected virtual bool TryMove(Vector3 _direction) { return false; }
-
-    private void OnCollisionEnter(Collision _collision)
-    {
-        OnHit(_collision.gameObject);
-    }
 }
