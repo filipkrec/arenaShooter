@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class Reticle : MonoBehaviour
 {
+    public float AimOffset => m_aimOffset;
+
+    [SerializeField] private float m_aimOffset = 100;
     [SerializeField] private Image m_reticleImage;
 
     public void Show(bool _doShow)

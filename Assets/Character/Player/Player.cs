@@ -46,7 +46,13 @@ public class Player : Character
 
     public bool TryShootDirectional(Vector2 _direction)
     {
-        transform.rotation = Quaternion.Euler(_direction);
+        RotateToDirection(new Vector3(_direction.x, 0f, _direction.y));
         return TryShoot();
+    }
+
+    public void RotateToDirection(Vector3 _direction)
+    {
+        transform.rotation = Quaternion.LookRotation(_direction, Vector3.up);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
     }
 }
