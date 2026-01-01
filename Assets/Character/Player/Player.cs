@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,6 +6,7 @@ public class Player : Character
 {
     [SerializeField] private CharacterScriptableObject m_characterSO;
     [SerializeField] private NavMeshAgent m_navMeshAgent;
+    [SerializeField] private AudioSource m_audioSource;
 
     //1 set weapon only for demo, otherwise would instantiate/pickup/swap or whatever required
     [SerializeField] private Weapon m_weapon;
@@ -13,6 +15,10 @@ public class Player : Character
     {
         m_hp = new HP(m_characterSO.HP);
         m_movement = new Movement(m_characterSO.Speed);
+        m_hp.OnDeath = () => AudioManager.Instance.Play(m_deathSound, m_audioSource);
+
+        //TODO remove test
+        StartCoroutine(TestSoundCoroutine());
     }
 
     private void Start()
@@ -44,5 +50,14 @@ public class Player : Character
     {
         transform.rotation = Quaternion.Euler(_direction);
         return TryShoot();
+    }
+
+    private IEnumerator TestSoundCoroutine()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            AudioManager.Instance.Play(m_deathSound, m_audioSource);
+        }
     }
 }

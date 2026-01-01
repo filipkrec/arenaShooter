@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78fc128ec432754a983380b85dc1b61, type: 3}
-  m_Name: DeathSoundPlayer
+  m_Name: EnemyDeath
   m_EditorClassIdentifier: 
-  AudioClip: {fileID: 8300000, guid: b999c3138d7a298468d8687f28308df5, type: 3}
+  AudioClip: {fileID: 8300000, guid: 9b398f6b3fa12ea4ea908168e5b25c75, type: 3}
   SoundType: 1
   CanStack: 0
   DoRepeat: 0
-  VolumeMultiplier: 1
+  VolumeMultiplier: 0.619

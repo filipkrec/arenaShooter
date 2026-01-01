@@ -7,4 +7,5 @@ public class SoundScriptableObject : ScriptableObject
     public ESound SoundType;
     public bool CanStack;
     public bool DoRepeat;
+    [Range(0f,1f)] public float VolumeMultiplier = 1f;
 }
