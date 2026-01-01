@@ -12,5 +12,8 @@ public class Character : MonoBehaviour
         m_hp.UpdateHP(-_damage);
     }
 
-    protected virtual bool TryMove(Vector3 _direction) { return false; }
+    public virtual bool TryMove(Vector2 _direction) 
+    { 
+        return false; 
+    }
 }

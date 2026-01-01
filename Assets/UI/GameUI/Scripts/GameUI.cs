@@ -7,10 +7,7 @@ public class GameUI : MonoBehaviour
     public const string LEVEL_TEMPLATE = "Current level : {0}";
 
     //no sense to couple UI with anything/everything. I might use some sort of event system for a more complex project, singleton will do fine for this one.
-    public static GameUI Instance
-    {
-        get; private set;
-    }
+    public static GameUI Instance => m_instance;
 
     private static GameUI m_instance;
 

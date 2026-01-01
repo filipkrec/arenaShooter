@@ -6,7 +6,6 @@ public class HPUI : MonoBehaviour
 {
     [SerializeField] private float m_updateDelay = 0.3f;
 
-    [SerializeField] private Image m_maxHpImage;
     [SerializeField] private Image m_currentHpImage;
 
     private Tween m_hpTween;
