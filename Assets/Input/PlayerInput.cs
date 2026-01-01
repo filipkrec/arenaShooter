@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -13,32 +12,27 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
-        m_input.Enable();
-        m_input.Game.Move.performed += OnMove;
-        m_input.Game.ShootDirectional.performed += OnShootDirectional;
+        m_input.Game.Enable();
     }
 
     private void OnDisable()
     {
-        m_input.Game.Move.performed -= OnMove;
         m_input.Game.Disable();
-    }
-
-    private void OnMove(InputAction.CallbackContext _context)
-    {
-        Vector2 moveInput = _context.ReadValue<Vector2>();
     }
 
     private void Update()
     {
-        if(m_input.Game.Move.IsPressed())
+        if (m_input.Game.Move.IsPressed())
         {
             m_player.TryMove(m_input.Game.Move.ReadValue<Vector2>());
         }
-    }
-
-    private void OnShootDirectional(InputAction.CallbackContext _context)
-    {
-
+        if (m_input.Game.ShootDirectional.IsPressed())
+        {
+            m_player.TryShootDirectional(m_input.Game.ShootDirectional.ReadValue<Vector2>());
+        }
+        if (m_input.Game.Shoot.IsPressed())
+        {
+            m_player.TryShoot();
+        }
     }
 }

@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2213816788441806651}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c37116a74c9774c8bd5f0cecea4f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_weaponScriptableObject: {fileID: 11400000, guid: 3c4c9620c7d6bc746803ba4c6079c929, type: 2}
   m_audioSource: {fileID: 460030518}
   m_projectilePrefab: {fileID: 1284974260723994574, guid: f8552fd52ea27c24da9427f2a8b6c63e, type: 3}
   m_shootSound: {fileID: 11400000, guid: bb3e7164db044e24d902dcf2880e4a71, type: 2}

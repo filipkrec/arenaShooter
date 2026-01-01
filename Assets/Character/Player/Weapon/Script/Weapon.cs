@@ -4,16 +4,19 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData WeaponData { get; private set; }
 
+    [SerializeField] private WeaponScriptableObject m_weaponScriptableObject;
     [SerializeField] private AudioSource m_audioSource;
 
     [SerializeField] private Projectile m_projectilePrefab;
     [SerializeField] private SoundScriptableObject m_shootSound;
     [SerializeField] private Transform m_shootOrigin;
 
-    //TODO init
     private void Awake()
     {
-        WeaponData = new WeaponData();
+        WeaponData = new WeaponData(m_weaponScriptableObject.AttackSpeed, 
+            m_weaponScriptableObject.ProjectileSpeed, 
+            m_weaponScriptableObject.AttackDamage, 
+            m_weaponScriptableObject.MaxAmmo); ;
     }
 
     public bool TryShoot(Vector3 _direction)

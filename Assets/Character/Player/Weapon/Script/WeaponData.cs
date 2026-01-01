@@ -14,6 +14,16 @@ public class WeaponData
     private int m_maxAmmo;
     private int m_currentAmmo;
 
+    public WeaponData(float _attackSpeed, float _projectileSpeed, float _attackDamage, int _maxAmmo)
+    {
+        m_attackSpeed = _attackSpeed;
+        m_attackDamage = _attackDamage;
+        m_projectileSpeed = _projectileSpeed;
+        m_maxAmmo = _maxAmmo;
+
+        m_currentAmmo = _maxAmmo;
+    }
+
     public bool TryShoot()
     {
         if(m_currentAmmo > 0)

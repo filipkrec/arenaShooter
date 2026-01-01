@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78fc128ec432754a983380b85dc1b61, type: 3}
   m_Name: ShootSound
   m_EditorClassIdentifier: 
-  AudioClip: {fileID: 0}
+  AudioClip: {fileID: 8300000, guid: 171a56e3878286f468b4b4ac753a7921, type: 3}
   SoundType: 1
   CanStack: 1
   DoRepeat: 0
