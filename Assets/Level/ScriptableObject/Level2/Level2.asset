@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78fc128ec432754a983380b85dc1b61, type: 3}
-  m_Name: EnemyDeath
+  m_Script: {fileID: 11500000, guid: 8daedc9c7d8126c45bede92acb6dc063, type: 3}
+  m_Name: Level2
   m_EditorClassIdentifier: 
-  AudioClip: {fileID: 8300000, guid: 9b398f6b3fa12ea4ea908168e5b25c75, type: 3}
-  SoundType: 1
-  CanStack: 0
-  DoRepeat: 0
-  VolumeMultiplier: 0.619
+  LevelEnemies:
+  - {fileID: 11400000, guid: 982ba95771787dc408d8ed43dc27e656, type: 2}
+  - {fileID: 11400000, guid: d869e574e9b97224f805dc5244d510d0, type: 2}
+  SpawnInterval: 0.75

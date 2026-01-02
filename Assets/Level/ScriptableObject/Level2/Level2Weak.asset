@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a10e5abf298a9449f8527f6e673531, type: 3}
-  m_Name: Weapon
+  m_Script: {fileID: 11500000, guid: 7598475a9aa9458408169dfb0909b179, type: 3}
+  m_Name: Level2Weak
   m_EditorClassIdentifier: 
-  AttackSpeed: 0.35
-  ProjectileSpeed: 4
-  AttackDamage: 2
-  MaxAmmo: 100
+  EnemyPrefab: {fileID: 6537651972205863627, guid: e0f98765908634b45a50b5adfb9d965d, type: 3}
+  Count: 20

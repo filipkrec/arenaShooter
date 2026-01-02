@@ -25,8 +25,19 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-
         m_levelData = new LevelData(player, 0, StartNextLevel);
+
+        //TODO think about this
+        StartLevel(s_StartingLevel);
+    }
+
+    private void StartLevel(int _levelIndex)
+    {
+        m_currentLevel = m_levels[_levelIndex];
+        StartCoroutine(SpawnEnemies());
+
+        m_levelData.Start(m_currentLevel);
+        GameUI.Instance.SetCurrentLevel(CurrentLevelIndex + 1);
     }
 
     private void StartNextLevel()
@@ -37,10 +48,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        m_currentLevel = m_levels[CurrentLevelIndex + 1];
-        SpawnEnemies();
-
-        m_levelData.Start(m_currentLevel);
+        StartLevel(CurrentLevelIndex + 1);
     }   
 
     private IEnumerator SpawnEnemies()
@@ -70,7 +78,7 @@ public class LevelManager : MonoBehaviour
             }
 
             Enemy enemy = Instantiate(enemyToSpawn, spawner.transform.position, Quaternion.identity);
-            enemy.InitEnemy(m_levelData.Player);
+            enemy.InitEnemy(m_levelData.Player, () => m_levelData.SetEnemyKilled());
 
             enemiesToSpawn[enemyToSpawn]--;
             if (enemiesToSpawn[enemyToSpawn] <= 0)

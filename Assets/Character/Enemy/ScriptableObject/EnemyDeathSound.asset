@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a10e5abf298a9449f8527f6e673531, type: 3}
-  m_Name: Weapon
+  m_Script: {fileID: 11500000, guid: d78fc128ec432754a983380b85dc1b61, type: 3}
+  m_Name: EnemyDeathSound
   m_EditorClassIdentifier: 
-  AttackSpeed: 0.35
-  ProjectileSpeed: 4
-  AttackDamage: 2
-  MaxAmmo: 100
+  AudioClip: {fileID: 8300000, guid: 9b398f6b3fa12ea4ea908168e5b25c75, type: 3}
+  SoundType: 1
+  CanStack: 0
+  DoRepeat: 0
+  VolumeMultiplier: 0.619

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,13 +13,16 @@ public class Enemy : Character
     [SerializeField] private EnemyScriptableObject m_enemySO;
     [SerializeField] private AudioSource m_audioSource;
 
+    private Action m_notifyOnDeath;
+
     /// <summary>
     /// Call on spawn. Initialize enemy with target player.
     /// </summary>
     /// <param name="_targetPlayer"></param>
-    public void InitEnemy(Player _targetPlayer)
+    public void InitEnemy(Player _targetPlayer, Action _notifyOnDeath)
     {
         m_targetPlayer = _targetPlayer;
+        m_notifyOnDeath = _notifyOnDeath;
 
         Init(m_enemySO);
         TryMove(default);
@@ -30,11 +34,14 @@ public class Enemy : Character
     {
         base.Init(_characterSO);
 
+        m_agent.speed = m_movement.Speed;
+
         if (_characterSO is EnemyScriptableObject enemySO)
         {
             m_damage = enemySO.Damage;
             m_hp.OnDeath = () =>
             {
+                m_notifyOnDeath?.Invoke();
                 AudioManager.Instance.Play(m_deathSound, m_audioSource);
                 Destroy(gameObject);
             };

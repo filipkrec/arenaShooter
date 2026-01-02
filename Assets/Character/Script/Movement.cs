@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Movement
 {
+    public float Speed => m_speed;
     private float m_speed;
 
     public Movement(float _speed)

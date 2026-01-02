@@ -20,7 +20,7 @@ public class HP
 
     public void UpdateHP(float _change)
     {
-        m_currentHP += Mathf.Clamp(_change, 0f, m_maxHP);
+        m_currentHP = Mathf.Clamp(m_currentHP + _change, 0f, m_maxHP);
 
         if(Mathf.Approximately(m_currentHP,0f))
         {
