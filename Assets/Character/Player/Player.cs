@@ -14,8 +14,7 @@ public class Player : Character
 
     private void Awake()
     {
-        m_hp = new HP(m_characterSO.HP);
-        m_movement = new Movement(m_characterSO.Speed);
+        Init(m_characterSO);
         m_hp.OnDeath = () => AudioManager.Instance.Play(m_deathSound, m_audioSource);
     }
 
