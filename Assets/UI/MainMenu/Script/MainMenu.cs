@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         m_levelSelectionButton.onClick.AddListener(() => m_levelSelectionMenu.gameObject.SetActive(true));
-        m_levelSelectionButton.onClick.AddListener(() => m_settings.gameObject.SetActive(true));
+        m_settingsButton.onClick.AddListener(() => m_settings.gameObject.SetActive(true));
         m_exitButton.onClick.AddListener(Exit);
     }
 

@@ -10,7 +10,7 @@ public class RotateSkybox : MonoBehaviour
         if (RenderSettings.skybox == null)
             return;
 
-        m_rotation += m_rotationSpeed * Time.deltaTime;
+        m_rotation += m_rotationSpeed * Time.unscaledDeltaTime;
         m_rotation %= 360f;
 
         RenderSettings.skybox.SetFloat("_Rotation", m_rotation);
