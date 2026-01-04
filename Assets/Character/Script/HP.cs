@@ -22,9 +22,11 @@ public class HP
     {
         m_currentHP = Mathf.Clamp(m_currentHP + _change, 0f, m_maxHP);
 
-        if(Mathf.Approximately(m_currentHP,0f))
+        if (Mathf.Approximately(m_currentHP,0f))
         {
             OnDeath?.Invoke();
         }
+
+        OnUpdateHP?.Invoke();
     }
 }

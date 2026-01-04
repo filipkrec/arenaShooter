@@ -16,7 +16,6 @@ public class Character : MonoBehaviour
     public virtual void OnHit(float _damage)
     {
         m_hp.UpdateHP(-_damage);
-        m_hp.OnUpdateHP?.Invoke();
     }
 
     public virtual bool TryMove(Vector2 _direction) 

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Weapon
   m_EditorClassIdentifier: 
   AttackSpeed: 0.2
-  ProjectileSpeed: 4
+  ProjectileSpeed: 8
   AttackDamage: 2
   MaxAmmo: 100

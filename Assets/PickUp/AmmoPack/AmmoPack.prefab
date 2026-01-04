@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rotationSpeed: 60
-  m_ammoAmount: 25
+  m_ammoAmount: 100
 --- !u!1001 &7181022979006372997
 PrefabInstance:
   m_ObjectHideFlags: 0

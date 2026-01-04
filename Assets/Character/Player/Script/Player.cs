@@ -14,7 +14,7 @@ public class Player : Character
 
     //1 set weapon only for demo, otherwise would instantiate/pickup/swap or whatever required
     [SerializeField] private Weapon m_weapon;
-    
+
 
     private void Awake()
     {
@@ -29,6 +29,7 @@ public class Player : Character
         GameUI.Instance.AmmoUI.Set(m_weapon.WeaponData.CurrentAmmo);
 
         m_hp.OnUpdateHP += () => GameUI.Instance.HPUI.Set(m_hp.CurrentHP / m_hp.MaxHp);
+        m_weapon.WeaponData.OnUpdateAmmo += () => GameUI.Instance.AmmoUI.Set(m_weapon.WeaponData.CurrentAmmo);
     }
 
     public override bool TryMove(Vector2 _direction)
@@ -46,12 +47,7 @@ public class Player : Character
 
     public bool TryShoot()
     {
-        bool hasShot = m_weapon.TryShoot(transform.rotation.eulerAngles);
-        if(hasShot)
-        {
-            GameUI.Instance.AmmoUI.Set(m_weapon.WeaponData.CurrentAmmo);
-        }
-        return hasShot;
+        return m_weapon.TryShoot(transform.rotation.eulerAngles);
     }
 
     public bool TryShootDirectional(Vector2 _direction)

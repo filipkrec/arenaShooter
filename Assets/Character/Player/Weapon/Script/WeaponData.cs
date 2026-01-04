@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WeaponData
@@ -7,6 +8,8 @@ public class WeaponData
     public float AttackDamage { get; private set; }
     public int MaxAmmo { get; private set; }
     public int CurrentAmmo { get; private set; }
+
+    public Action OnUpdateAmmo;
 
     public WeaponData(float _attackSpeed, float _projectileSpeed, float _attackDamage, int _maxAmmo)
     {
@@ -32,5 +35,6 @@ public class WeaponData
     public void UpdateAmmo(int amount)
     {
         CurrentAmmo = Mathf.Clamp(CurrentAmmo + amount, 0, MaxAmmo);
+        OnUpdateAmmo?.Invoke();
     }
 }
