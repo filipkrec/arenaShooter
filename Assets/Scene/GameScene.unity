@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 14778cf01e8a7aa4caefc3149a41c430, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2402,6 +2402,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1486379617}
     m_Modifications:
+    - target: {fileID: 2567939864033691784, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626694150165621575, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2724508324759117804, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
       propertyPath: m_Name
       value: GameUI
@@ -2488,6 +2496,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2724508324759117805, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467972715052508829, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030850402387707218, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335217704954533285, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523199594547395504, guid: df59fb1eec911714d8d317e85bc288d1, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

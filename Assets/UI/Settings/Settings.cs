@@ -7,6 +7,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private Slider m_musicSlider;
     [SerializeField] private Slider m_sfxSlider;
     [SerializeField] private Button m_closeButton;
+    [SerializeField] private Button m_exitToMenuButton;
 
     private void Start()
     {
@@ -36,5 +37,11 @@ public class Settings : MonoBehaviour
     {
         PlayerPrefs.SetFloat(_channel, _value);
         AudioManager.Instance?.SetChannelVolume(_channel, _value);
+    }
+
+    public void EnableExitToMenu()
+    {
+        m_exitToMenuButton.gameObject.SetActive(true);
+        m_exitToMenuButton.onClick.AddListener(() => SceneLoader.LoadScene(SceneLoader.SCENE_MENU));
     }
 }

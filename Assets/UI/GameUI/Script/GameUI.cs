@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class GameUI : MonoBehaviour
 
     private static GameUI m_instance;
 
+    public HPUI HPUI;
+    public AmmoUI AmmoUI;
+    public Reticle Reticle;
+
+    [SerializeField] private Button m_settingsButton;
+    [SerializeField] private Settings m_settings;
+
+    [SerializeField] private TextMeshProUGUI m_currentLevel;
+
     private void Awake()
     {
         if(m_instance != null)
@@ -21,11 +31,11 @@ public class GameUI : MonoBehaviour
         m_instance = this;
     }
 
-    public HPUI HPUI;
-    public AmmoUI AmmoUI;
-    public Reticle Reticle;
-
-    [SerializeField] private TextMeshProUGUI m_currentLevel;
+    private void Start()
+    {
+        m_settingsButton.onClick.AddListener(() => m_settings.gameObject.SetActive(true));
+        m_settings.EnableExitToMenu();
+    }
 
     public void SetCurrentLevel(int _level)
     {

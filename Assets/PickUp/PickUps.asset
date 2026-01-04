@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701c68f07feb93c43931ee0c25d43e59, type: 3}
   m_Name: PickUps
   m_EditorClassIdentifier: 
+  DropChance: 0.25
   PickUpPrefabs:
   - {fileID: 1258360125793418999, guid: 6bcefce4efd232a4287c8c5980a4b8aa, type: 3}
   - {fileID: 4307265771395558722, guid: 94720bfcce39ab149ab1b7db2b54d39a, type: 3}

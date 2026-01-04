@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
@@ -56,7 +57,7 @@ public class PlayerInput : MonoBehaviour
             GameUI.Instance.Reticle.UpdatePosition(direction * offset);
         }
 
-        if (m_input.Game.Shoot.IsPressed())
+        if (!IsPointerOverUI() && m_input.Game.Shoot.IsPressed())
         {
             m_player.TryShoot();
         }
@@ -75,5 +76,10 @@ public class PlayerInput : MonoBehaviour
 
             GameUI.Instance.Reticle.UpdatePosition(Input.mousePosition);
         }
+    }
+    private bool IsPointerOverUI()
+    {
+        return EventSystem.current != null &&
+               EventSystem.current.IsPointerOverGameObject();
     }
 }
