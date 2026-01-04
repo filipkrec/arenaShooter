@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class Settings : MonoBehaviour
     [SerializeField] private Slider m_sfxSlider;
     [SerializeField] private Button m_closeButton;
     [SerializeField] private Button m_exitToMenuButton;
+
+    public Action OnCloseSettings;
 
     private void Start()
     {
@@ -31,6 +34,7 @@ public class Settings : MonoBehaviour
     private void OnDisable()
     {
         Time.timeScale = 1f;
+        OnCloseSettings?.Invoke();
     }
 
     private void SetVolume(string _channel, float _value)

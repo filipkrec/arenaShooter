@@ -30,6 +30,7 @@ public class Player : Character
 
         m_hp.OnUpdateHP += () => GameUI.Instance.HPUI.Set(m_hp.CurrentHP / m_hp.MaxHp);
         m_weapon.WeaponData.OnUpdateAmmo += () => GameUI.Instance.AmmoUI.Set(m_weapon.WeaponData.CurrentAmmo);
+        m_hp.OnDeath += () => GameUI.Instance.ShowDefeatScreen();
     }
 
     public override bool TryMove(Vector2 _direction)

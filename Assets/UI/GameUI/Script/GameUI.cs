@@ -21,6 +21,14 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_currentLevel;
 
+    [Header("Victory")]
+    [SerializeField] private GameObject m_victoryScreen;
+    [SerializeField] private Button m_exitButtonVictory;
+
+    [Header("Defeat")]
+    [SerializeField] private GameObject m_defeatScreen;
+    [SerializeField] private Button m_exitButtonDefeat;
+
     private void Awake()
     {
         if(m_instance != null)
@@ -32,13 +40,37 @@ public class GameUI : MonoBehaviour
     }
 
     private void Start()
-    {
-        m_settingsButton.onClick.AddListener(() => m_settings.gameObject.SetActive(true));
+    {   
         m_settings.EnableExitToMenu();
+        m_settings.OnCloseSettings = () => Reticle.Show(true);
+        m_settingsButton.onClick.AddListener(ShowSettings);
+        Reticle.Show(true);
     }
 
     public void SetCurrentLevel(int _level)
     {
         m_currentLevel.text = string.Format(LEVEL_TEMPLATE, _level);
+    }
+
+    public void ShowVictoryScreen()
+    {
+        Time.timeScale = 0f;
+
+        m_victoryScreen.gameObject.SetActive(true);
+        m_exitButtonVictory.onClick.AddListener(() => SceneLoader.LoadScene(SceneLoader.SCENE_MENU));
+    }
+
+    public void ShowDefeatScreen()
+    {
+        Time.timeScale = 0f;
+
+        m_defeatScreen.gameObject.SetActive(true);
+        m_exitButtonDefeat.onClick.AddListener(() => SceneLoader.LoadScene(SceneLoader.SCENE_MENU));
+    }
+
+    private void ShowSettings()
+    {
+        m_settings.gameObject.SetActive(true);
+        Reticle.Show(false);
     }
 }

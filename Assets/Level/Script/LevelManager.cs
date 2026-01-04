@@ -27,7 +27,6 @@ public class LevelManager : MonoBehaviour
 
         m_levelData = new LevelData(player, 0, StartNextLevel);
 
-        //TODO think about this
         StartLevel(s_StartingLevel);
     }
 
@@ -44,7 +43,7 @@ public class LevelManager : MonoBehaviour
     {
         if (CurrentLevelIndex + 1 >= m_levels.Levels.Count)
         {
-            //TODO win game
+            GameUI.Instance.ShowVictoryScreen();
             return;
         }
 

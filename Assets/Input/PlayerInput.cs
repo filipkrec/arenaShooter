@@ -41,6 +41,8 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (Mathf.Approximately(Time.timeScale, 0f)) return;
+
         if (m_input.Game.Move.IsPressed())
         {
             m_player.TryMove(m_input.Game.Move.ReadValue<Vector2>());

@@ -10,6 +10,7 @@ public class Reticle : MonoBehaviour
 
     public void Show(bool _doShow)
     {
+        Cursor.visible = !_doShow; 
         m_reticleImage.gameObject.SetActive(_doShow);
     }
 

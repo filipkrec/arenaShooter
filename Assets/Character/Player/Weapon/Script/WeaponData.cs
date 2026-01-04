@@ -25,7 +25,7 @@ public class WeaponData
     {
         if (CurrentAmmo > 0)
         {
-            CurrentAmmo--;
+            UpdateAmmo(-1);
             return true;
         }
 
