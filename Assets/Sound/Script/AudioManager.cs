@@ -9,9 +9,9 @@ public class AudioManager : MonoBehaviour
 
     private static AudioManager m_instance;
 
-    private const string MIXER_MASTER_VOLUME = "Master";
-    private const string MIXER_MUSIC_VOLUME = "Music";
-    private const string MIXER_SFX_VOLUME = "SFX";
+    public const string MIXER_MASTER_VOLUME = "Master";
+    public const string MIXER_MUSIC_VOLUME = "Music";
+    public const string MIXER_SFX_VOLUME = "SFX";
 
     [SerializeField] private SoundScriptableObject m_bgm;
     [SerializeField] private AudioMixer m_audioMixer;
@@ -32,6 +32,14 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(m_instance);
         }
+
+        m_masterVolume = PlayerPrefs.GetFloat(MIXER_MASTER_VOLUME, 1.0f);
+        m_musicVolume = PlayerPrefs.GetFloat(MIXER_MUSIC_VOLUME, 1.0f);
+        m_SFXVolume = PlayerPrefs.GetFloat(MIXER_SFX_VOLUME, 1.0f);
+
+        SetChannelVolume(MIXER_MASTER_VOLUME, m_masterVolume);
+        SetChannelVolume(MIXER_MUSIC_VOLUME, m_musicVolume);
+        SetChannelVolume(MIXER_SFX_VOLUME, m_SFXVolume);
 
         m_instance = this;
     }
@@ -84,6 +92,13 @@ public class AudioManager : MonoBehaviour
 
         _source.Play();
     }
+
+    public void SetChannelVolume(string _channel, float _volume)
+    {
+        // Set the AudioMixer values (linear [0,1] mapped to dB), boilerplate formula
+        m_audioMixer.SetFloat(_channel, Mathf.Log10(_volume <= 0 ? 0.0001f : _volume) * 20f);
+    }
+
 }
 
 public struct ActiveSound
