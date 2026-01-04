@@ -18,6 +18,9 @@ public class MainMenu : MonoBehaviour
         m_levelSelectionButton.onClick.AddListener(() => m_levelSelectionMenu.gameObject.SetActive(true));
         m_settingsButton.onClick.AddListener(() => m_settings.gameObject.SetActive(true));
         m_exitButton.onClick.AddListener(Exit);
+
+        Time.timeScale = 1f;
+        Cursor.visible = true;
     }
 
     public void Exit()

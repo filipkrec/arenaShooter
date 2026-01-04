@@ -52,12 +52,15 @@ public class GameUI : MonoBehaviour
         m_currentLevel.text = string.Format(LEVEL_TEMPLATE, _level);
     }
 
+    //TODO unite victory defeat?
     public void ShowVictoryScreen()
     {
         Time.timeScale = 0f;
 
         m_victoryScreen.gameObject.SetActive(true);
         m_exitButtonVictory.onClick.AddListener(() => SceneLoader.LoadScene(SceneLoader.SCENE_MENU));
+
+        Reticle.Show(false);
     }
 
     public void ShowDefeatScreen()
@@ -66,6 +69,8 @@ public class GameUI : MonoBehaviour
 
         m_defeatScreen.gameObject.SetActive(true);
         m_exitButtonDefeat.onClick.AddListener(() => SceneLoader.LoadScene(SceneLoader.SCENE_MENU));
+
+        Reticle.Show(false);
     }
 
     private void ShowSettings()
