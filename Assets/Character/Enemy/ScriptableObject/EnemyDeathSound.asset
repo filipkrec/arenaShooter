@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioClip: {fileID: 8300000, guid: 9b398f6b3fa12ea4ea908168e5b25c75, type: 3}
   SoundType: 1
-  CanStack: 0
+  CanStack: 1
   DoRepeat: 0
-  VolumeMultiplier: 0.619
+  VolumeMultiplier: 0.203

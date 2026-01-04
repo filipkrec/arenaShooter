@@ -42,7 +42,7 @@ public class Enemy : Character
             m_hp.OnDeath = () =>
             {
                 m_notifyOnDeath?.Invoke();
-                AudioManager.Instance.Play(m_deathSound, m_audioSource);
+                AudioManager.Instance.Play(m_deathSound);
                 Destroy(gameObject);
             };
         }
@@ -77,7 +77,8 @@ public class Enemy : Character
         if (_collision.gameObject.CompareTag(Player.PLAYER_TAG))
         {
             _collision.gameObject.GetComponent<Player>().OnHit(m_damage);
-            Destroy(gameObject);
+
+            m_hp.UpdateHP(-m_hp.CurrentHP);
         }
     }
 }

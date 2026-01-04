@@ -16,4 +16,4 @@ MonoBehaviour:
   SoundType: 1
   CanStack: 1
   DoRepeat: 0
-  VolumeMultiplier: 1
+  VolumeMultiplier: 0.436

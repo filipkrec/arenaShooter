@@ -13,7 +13,6 @@ public class AmmoUI : MonoBehaviour
 
     public void Set(int _currentAmmo)
     {
-        //TODO animation?
         m_currentAmmo.text = _currentAmmo.ToString();
     }
 }

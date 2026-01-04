@@ -16,7 +16,12 @@ public class LevelData
 
     public void Start(LevelScriptableObject _level)
     {
-        AliveEnemyCount = _level.LevelEnemies.Count;
+        AliveEnemyCount = 0;
+        
+        foreach(LevelEnemiesScriptableObject levelEnemies in _level.LevelEnemies)
+        {
+            AliveEnemyCount += levelEnemies.Count;
+        }
     }
 
     public void SetEnemyKilled()

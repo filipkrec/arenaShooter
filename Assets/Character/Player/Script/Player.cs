@@ -23,6 +23,8 @@ public class Player : Character
         GameUI.Instance.HPUI.Set(m_hp.CurrentHP / m_hp.MaxHp);
         GameUI.Instance.AmmoUI.Init(m_weapon.WeaponData.MaxAmmo);
         GameUI.Instance.AmmoUI.Set(m_weapon.WeaponData.CurrentAmmo);
+
+        m_hp.OnUpdateHP += () => GameUI.Instance.HPUI.Set(m_hp.CurrentHP / m_hp.MaxHp);
     }
 
     public override bool TryMove(Vector2 _direction)
@@ -40,7 +42,12 @@ public class Player : Character
 
     public bool TryShoot()
     {
-        return m_weapon.TryShoot(transform.rotation.eulerAngles);
+        bool hasShot = m_weapon.TryShoot(transform.rotation.eulerAngles);
+        if(hasShot)
+        {
+            GameUI.Instance.AmmoUI.Set(m_weapon.WeaponData.CurrentAmmo);
+        }
+        return hasShot;
     }
 
     public bool TryShootDirectional(Vector2 _direction)
@@ -51,7 +58,7 @@ public class Player : Character
 
     public void RotateToDirection(Vector3 _direction)
     {
-        transform.rotation = Quaternion.LookRotation(_direction, Vector3.up);
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        Vector3 targetRotation = Quaternion.LookRotation(_direction, Vector3.up).eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, targetRotation.y, 0f);
     }
 }

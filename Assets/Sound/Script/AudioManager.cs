@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     private const string MIXER_MUSIC_VOLUME = "Music";
     private const string MIXER_SFX_VOLUME = "SFX";
 
+    [SerializeField] private SoundScriptableObject m_bgm;
     [SerializeField] private AudioMixer m_audioMixer;
     [SerializeField] private AudioSource m_musicSource;
     [SerializeField] private AudioSource m_sfxSource;
@@ -33,6 +34,11 @@ public class AudioManager : MonoBehaviour
         }
 
         m_instance = this;
+    }
+
+    private void Start()
+    {
+        Play(m_bgm);
     }
 
     public void Play(SoundScriptableObject _sound, AudioSource _source = null)
