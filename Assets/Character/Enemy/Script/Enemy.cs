@@ -6,12 +6,15 @@ using UnityEngine.AI;
 public class Enemy : Character
 {
     const float REPATH_DELAY = 0.15f;
-    
+    const float DROP_SPAWN_HEIGHT = 0.5f;
+
     private Player m_targetPlayer;
     private float m_damage;
     [SerializeField] private NavMeshAgent m_agent;
     [SerializeField] private EnemyScriptableObject m_enemySO;
     [SerializeField] private AudioSource m_audioSource;
+
+    [SerializeField] private PickUpsScriptableObject m_pickUpsScriptableObjects;
 
     private Action m_notifyOnDeath;
 
@@ -43,6 +46,7 @@ public class Enemy : Character
             {
                 m_notifyOnDeath?.Invoke();
                 AudioManager.Instance.Play(m_deathSound);
+                RollDrop();
                 Destroy(gameObject);
             };
         }
@@ -50,7 +54,7 @@ public class Enemy : Character
 
     private IEnumerator RepathCoroutine()
     {
-        while(true)
+        while (true)
         {
             TryMove(default);
             yield return new WaitForSeconds(REPATH_DELAY);
@@ -79,6 +83,16 @@ public class Enemy : Character
             _collision.gameObject.GetComponent<Player>().OnHit(m_damage);
 
             m_hp.UpdateHP(-m_hp.CurrentHP);
+        }
+    }
+
+    private void RollDrop()
+    {
+        if (UnityEngine.Random.Range(0f, 1f) <= m_pickUpsScriptableObjects.DropChance)
+        {
+            WorldPickUpBase dropPrefab = m_pickUpsScriptableObjects.PickUpPrefabs[UnityEngine.Random.Range(0, m_pickUpsScriptableObjects.PickUpPrefabs.Count)];
+            WorldPickUpBase drop = Instantiate(dropPrefab, null);
+            drop.transform.position = new Vector3(transform.position.x, DROP_SPAWN_HEIGHT, transform.position.z);
         }
     }
 }

@@ -5,12 +5,16 @@ public class Player : Character
 {
     public const string PLAYER_TAG = "Player";
 
+    public Weapon Weapon => m_weapon;
+    public HP HP => m_hp;
+
     [SerializeField] private CharacterScriptableObject m_characterSO;
     [SerializeField] private NavMeshAgent m_navMeshAgent;
     [SerializeField] private AudioSource m_audioSource;
 
     //1 set weapon only for demo, otherwise would instantiate/pickup/swap or whatever required
     [SerializeField] private Weapon m_weapon;
+    
 
     private void Awake()
     {

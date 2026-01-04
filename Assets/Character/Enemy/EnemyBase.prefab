@@ -105,6 +105,8 @@ MonoBehaviour:
   m_agent: {fileID: -3476460851425495734}
   m_enemySO: {fileID: 0}
   m_audioSource: {fileID: 2825573928584073981}
+  m_dropChance: 0.1
+  m_pickUpsScriptableObjects: {fileID: 11400000, guid: aab4bf114b285f04fb47fe04b406513e, type: 2}
 --- !u!82 &2825573928584073981
 AudioSource:
   m_ObjectHideFlags: 0
