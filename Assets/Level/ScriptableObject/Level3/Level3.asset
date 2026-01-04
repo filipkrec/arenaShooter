@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8daedc9c7d8126c45bede92acb6dc063, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  LevelEnemies: []
+  LevelEnemies:
+  - {fileID: 11400000, guid: 5c2c8d79fc9a414498531bbb5a786598, type: 2}
+  - {fileID: 11400000, guid: 42fbcf8b2b66f9a4a988dd0ad8d0c65c, type: 2}
   SpawnInterval: 0.5

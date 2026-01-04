@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button m_settingsButton;
     [SerializeField] private Button m_exitButton;
 
-    [SerializeField] private GameObject m_levelSelectionMenu;
+    [SerializeField] private LevelSelectionMenu m_levelSelectionMenu;
     [SerializeField] private GameObject m_settings;
 
     private void Start()
@@ -18,11 +18,6 @@ public class MainMenu : MonoBehaviour
         m_levelSelectionButton.onClick.AddListener(() => m_levelSelectionMenu.gameObject.SetActive(true));
         m_levelSelectionButton.onClick.AddListener(() => m_settings.gameObject.SetActive(true));
         m_exitButton.onClick.AddListener(Exit);
-    }
-
-    public void SetStartingLevel(int _level)
-    {
-        LevelManager.s_StartingLevel = _level;
     }
 
     public void Exit()

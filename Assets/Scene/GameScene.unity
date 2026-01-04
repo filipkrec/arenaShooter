@@ -1250,10 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495c84f97ae94814da43b49ba390272a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levels:
-  - {fileID: 11400000, guid: 6fc429437e23f0647bb266fa5e07fc8b, type: 2}
-  - {fileID: 11400000, guid: f7b48e090c4045c4bb541b6b120c4d4b, type: 2}
-  - {fileID: 11400000, guid: d888f88f0d4f7ba48b6a3e1a5746c063, type: 2}
+  m_levels: {fileID: 11400000, guid: 2048d1f2201b2f844b3ff37ed0103f29, type: 2}
   m_spawners:
   - {fileID: 1083877642}
   - {fileID: 1508264424}

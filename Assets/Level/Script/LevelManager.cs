@@ -8,12 +8,12 @@ public class LevelManager : MonoBehaviour
     public const float OVERFLOW_CHECK_DELAY = 1f;
     public static int s_StartingLevel = 0;
 
-    public int CurrentLevelIndex => m_levels.IndexOf(m_currentLevel);
+    public int CurrentLevelIndex => m_levels.Levels.IndexOf(m_currentLevel);
 
     private LevelData m_levelData;
     private LevelScriptableObject m_currentLevel;
 
-    [SerializeField] private List<LevelScriptableObject> m_levels;
+    [SerializeField] private LevelsScriptableObject m_levels;
     [SerializeField] private List<Spawner> m_spawners;
 
     private void Start()
@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
 
     private void StartLevel(int _levelIndex)
     {
-        m_currentLevel = m_levels[_levelIndex];
+        m_currentLevel = m_levels.Levels[_levelIndex];
         StartCoroutine(SpawnEnemies());
 
         m_levelData.Start(m_currentLevel);
@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
 
     private void StartNextLevel()
     {
-        if (CurrentLevelIndex + 1 >= m_levels.Count)
+        if (CurrentLevelIndex + 1 >= m_levels.Levels.Count)
         {
             //TODO win game
             return;
