@@ -12,6 +12,7 @@ public class LocalizedText : MonoBehaviour
     private void Start()
     {
         Localization.OnLanguageChanged += SetLanguage;
+        SetLanguage(Localization.s_CurrentLanguage);
     }
 
     public string GetLocalizedText(string _language)

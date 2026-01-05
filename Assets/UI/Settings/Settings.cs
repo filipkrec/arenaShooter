@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,16 @@ public class Settings : MonoBehaviour
         m_sfxSlider.onValueChanged.AddListener((x) => SetVolume(AudioManager.MIXER_SFX_VOLUME, x));
 
         m_languageDropdown.onValueChanged.AddListener(SetLanguage);
+
+        int selectedIndex = m_languageDropdown.options.FindIndex(x => x.text.Equals(Localization.s_CurrentLanguage));
+        
+        if(selectedIndex == -1) //no index found = -1
+        {
+            Debug.LogError("No index found for current language");
+            return;
+        }
+
+        m_languageDropdown.SetValueWithoutNotify(selectedIndex);
     }
 
     private void OnEnable()
