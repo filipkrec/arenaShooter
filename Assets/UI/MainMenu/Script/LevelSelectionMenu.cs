@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class LevelSelectionMenu : MonoBehaviour
 {
-    [SerializeField] private LevelsScriptableObject m_levels;
+    [SerializeField] private LevelsCountScriptableObject m_levels;
     [SerializeField] private Button m_exitButton;
     [SerializeField] private LevelSelectionButton m_levelSelectionButtonPrefab;
     [SerializeField] private Transform m_buttonParent;
@@ -11,9 +11,9 @@ public class LevelSelectionMenu : MonoBehaviour
     private void Awake()
     {
         int index = 0;
-        foreach (LevelScriptableObject level in m_levels.Levels)
+        for (int i = 0; i < m_levels.Value; i++)
         {
-            int currentIndex = index; //cache for button action
+            int currentIndex = i; //cache for button action
 
             LevelSelectionButton button = Instantiate(m_levelSelectionButtonPrefab, m_buttonParent);
             button.Button.onClick.AddListener(() => OnSelectLevel(currentIndex));

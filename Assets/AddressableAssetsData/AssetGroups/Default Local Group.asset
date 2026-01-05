@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6de5e6e0baad4e445b796372706aa6a2
+  m_SerializeEntries:
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Assets/Scene/GameScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameScene
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 1f6fe88ad9d5d714bb9c077c60e3e933, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cb29abc4a8176cf4eafda9fbd07ecfce, type: 2}
+    - {fileID: 11400000, guid: 65494a755ba6b3b40a93c15ec7b1656c, type: 2}

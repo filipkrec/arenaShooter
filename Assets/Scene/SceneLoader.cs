@@ -1,12 +1,12 @@
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 public static class SceneLoader
 {
-    public const int SCENE_MENU = 0;
-    public const int SCENE_GAME = 1;
+    public const string SCENE_MENU = "MainMenuScene";
+    public const string SCENE_GAME = "GameScene";
 
-    public static void LoadScene(int _scene)
+    public static void LoadScene(string _scene)
     {
-        SceneManager.LoadScene(_scene);
+        Addressables.LoadSceneAsync(_scene);
     }
 }
