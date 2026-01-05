@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private PlayerInputActions m_input;
+    public static  PlayerInputActions s_input = new PlayerInputActions();
+
     [SerializeField] private Player m_player;
 
     private InputDevice m_currentDevice;
@@ -14,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         m_main = Camera.main;
-        m_input = new PlayerInputActions();
+        s_input = new PlayerInputActions();
         m_playerPlane = new Plane(Vector3.up, m_player.transform.position);
     }
 
@@ -25,33 +26,37 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
-        m_input.Game.Enable();
-        m_input.Game.Move.performed += SetDevice;
-        m_input.Game.Shoot.performed += SetDevice;
-        m_input.Game.ShootDirectional.performed += SetDevice;
+        if (!s_input.Game.enabled)
+        {
+            s_input.Game.Enable();
+        }
+
+        s_input.Game.Move.performed += SetDevice;
+        s_input.Game.Shoot.performed += SetDevice;
+        s_input.Game.ShootDirectional.performed += SetDevice;
     }
 
     private void OnDisable()
     {
-        m_input.Game.Disable();
-        m_input.Game.Move.performed -= SetDevice;
-        m_input.Game.Shoot.performed -= SetDevice;
-        m_input.Game.ShootDirectional.performed -= SetDevice;
+        s_input.Game.Disable();
+        s_input.Game.Move.performed -= SetDevice;
+        s_input.Game.Shoot.performed -= SetDevice;
+        s_input.Game.ShootDirectional.performed -= SetDevice;
     }
 
     private void Update()
     {
         if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
-        if (m_input.Game.Move.IsPressed())
+        if (s_input.Game.Move.IsPressed())
         {
-            m_player.TryMove(m_input.Game.Move.ReadValue<Vector2>());
+            m_player.TryMove(s_input.Game.Move.ReadValue<Vector2>());
         }
 
         //rotate to stick direction and shoot otherwise
-        if (m_input.Game.ShootDirectional.IsPressed())
+        if (s_input.Game.ShootDirectional.IsPressed())
         {
-            Vector2 direction = m_input.Game.ShootDirectional.ReadValue<Vector2>();
+            Vector2 direction = s_input.Game.ShootDirectional.ReadValue<Vector2>();
             m_player.TryShootDirectional(direction);
             
             float offset = GameUI.Instance.Reticle.AimOffset;
@@ -59,7 +64,7 @@ public class PlayerInput : MonoBehaviour
             GameUI.Instance.Reticle.UpdatePosition(direction * offset);
         }
 
-        if (!IsPointerOverUI() && m_input.Game.Shoot.IsPressed())
+        if (!IsPointerOverUI() && s_input.Game.Shoot.IsPressed())
         {
             m_player.TryShoot();
         }
@@ -79,6 +84,7 @@ public class PlayerInput : MonoBehaviour
             GameUI.Instance.Reticle.UpdatePosition(Input.mousePosition);
         }
     }
+
     private bool IsPointerOverUI()
     {
         return EventSystem.current != null &&

@@ -3,7 +3,12 @@ guid: d6ea25e05dcad25468f09745a39b1279
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_HealPack
+    second: {fileID: 2100000, guid: e59c885f9eb6f214a918c20e806e8543, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

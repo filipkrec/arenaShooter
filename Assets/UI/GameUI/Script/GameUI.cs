@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
@@ -28,7 +29,7 @@ public class GameUI : MonoBehaviour
 
     private void Awake()
     {
-        if(m_instance != null)
+        if (m_instance != null)
         {
             Destroy(m_instance.gameObject);
         }
@@ -37,11 +38,18 @@ public class GameUI : MonoBehaviour
     }
 
     private void Start()
-    {   
+    {
         m_settings.EnableExitToMenu();
         m_settings.OnCloseSettings = () => Reticle.Show(true);
         m_settingsButton.onClick.AddListener(ShowSettings);
         Reticle.Show(true);
+
+        if (!PlayerInput.s_input.Game.enabled)
+        {
+            PlayerInput.s_input.Game.Enable();
+        }
+
+        PlayerInput.s_input.Game.Escape.performed += ToggleSettings;
     }
 
     public void SetCurrentLevel(int _level)
@@ -74,5 +82,15 @@ public class GameUI : MonoBehaviour
     {
         m_settings.gameObject.SetActive(true);
         Reticle.Show(false);
+    }
+
+    private void ToggleSettings(InputAction.CallbackContext _context)
+    {
+        m_settings.gameObject.SetActive(!m_settings.gameObject.activeSelf);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerInput.s_input.Game.Escape.performed -= ToggleSettings;
     }
 }
