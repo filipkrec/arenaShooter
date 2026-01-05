@@ -552,6 +552,7 @@ MonoBehaviour:
   m_sfxSlider: {fileID: 3674790432872533853}
   m_closeButton: {fileID: 6824216293298377220}
   m_exitToMenuButton: {fileID: 912865234678535566}
+  m_languageDropdown: {fileID: 5988287778275502098}
 --- !u!1 &7437728875916260002
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +988,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4091519189210901910, guid: b4b512fc5c0233f42a2182cda344e9ee, type: 3}
   m_PrefabInstance: {fileID: 2653799143729501380}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5988287778275502098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8633009347558325462, guid: b4b512fc5c0233f42a2182cda344e9ee, type: 3}
+  m_PrefabInstance: {fileID: 2653799143729501380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6653764712164618326
 PrefabInstance:
   m_ObjectHideFlags: 0

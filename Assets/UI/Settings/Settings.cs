@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private Slider m_sfxSlider;
     [SerializeField] private Button m_closeButton;
     [SerializeField] private Button m_exitToMenuButton;
+    [SerializeField] private TMP_Dropdown m_languageDropdown;
 
     public Action OnCloseSettings;
 
@@ -24,6 +26,8 @@ public class Settings : MonoBehaviour
         m_masterSlider.onValueChanged.AddListener((x) => SetVolume(AudioManager.MIXER_MASTER_VOLUME, x));
         m_musicSlider.onValueChanged.AddListener((x) => SetVolume(AudioManager.MIXER_MUSIC_VOLUME, x));
         m_sfxSlider.onValueChanged.AddListener((x) => SetVolume(AudioManager.MIXER_SFX_VOLUME, x));
+
+        m_languageDropdown.onValueChanged.AddListener(SetLanguage);
     }
 
     private void OnEnable()
@@ -47,5 +51,10 @@ public class Settings : MonoBehaviour
     {
         m_exitToMenuButton.gameObject.SetActive(true);
         m_exitToMenuButton.onClick.AddListener(() => SceneLoader.LoadScene(SceneLoader.SCENE_MENU));
+    }
+
+    private void SetLanguage(int _index)
+    {
+        Localization.SetLanguage(m_languageDropdown.options[_index].text);
     }
 }
